@@ -1,3 +1,5 @@
 node_modules
 .env
 combined.log
+.kilo
+src/config/config.json
