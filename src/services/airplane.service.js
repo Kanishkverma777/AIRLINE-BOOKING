@@ -48,8 +48,8 @@ async function getAirplane(id) {
 
     try {    
         
-        const arirplanes = await airplaneRepository.get(id);
-        return arirplanes;
+        const arirplane = await airplaneRepository.get(id);
+        return arirplane ;
 
     }catch(error) {
         if( error.statusCode == StatusCodes.NOT_FOUND) {
@@ -60,8 +60,29 @@ async function getAirplane(id) {
     
 } 
 
+// To delete a single airplane object from the database
+
+async function destroyAirplane( id ){
+
+    try{
+
+        const response = await airplaneRepository.destroy(id);
+        return response ;
+
+    }catch(error){
+
+        if( error.statusCode == StatusCodes.NOT_FOUND) {
+            throw new AppError('The airplane you requested is not available', error.statusCode);
+        }
+        throw new AppError('Cannnot fetch all airplanes', StatusCodes.INTERNAL_SERVER_ERROR);
+
+    }
+
+}
+
 module.exports = {
     createAirplane,
     getAllAirplanes,
-    getAirplane
+    getAirplane,
+    destroyAirplane
 }

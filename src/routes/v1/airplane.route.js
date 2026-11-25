@@ -30,4 +30,13 @@ router.get('/', AirplaneController.getAllAirplanes);
 
 router.get('/:id', AirplaneController.getAirplane);
 
+/**
+ * api : /api/v1/airplane/:id
+ * method : DELETE
+ * access : PUBLIC
+ * description : delete an airplane by id
+ */
+
+router.delete('/:id', AirplaneController.destroyAirplane);
+
 module.exports = router;
