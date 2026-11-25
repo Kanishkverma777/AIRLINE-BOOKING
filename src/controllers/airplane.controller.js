@@ -30,6 +30,29 @@ async function createAirplane(req, res) {
     }  
 }
 
+/**
+ * GET : /airplanes
+ */
+
+async function getAllAirplanes(req, res) {
+
+    try{ 
+
+        const airplanes = await AirplaneService.getAllAirplanes();
+        successResponse.data = airplanes;
+        return res
+                .status(StatusCodes.OK)
+                .json( successResponse );
+
+    }catch(error){
+        ErrorResponse.error = error;
+        return res
+                .status(error.statusCode)
+                .json( errorResponse );
+    }
+}
+
 module.exports = {
-    createAirplane
+    createAirplane,
+    getAllAirplanes
 }

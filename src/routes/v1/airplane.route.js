@@ -12,4 +12,13 @@ const { AirplaneValidate} = require('../../middleware')
 
 router.post('/', AirplaneValidate.validateCreateRequest, AirplaneController.createAirplane);
 
+/**
+ * api : /api/v1/airplane
+ * method : GET
+ * access : PUBLIC
+ * description : get all airplanes
+ */
+
+router.get('/', AirplaneController.getAllAirplanes);
+
 module.exports = router;
