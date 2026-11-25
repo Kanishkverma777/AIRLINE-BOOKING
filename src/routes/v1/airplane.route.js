@@ -21,4 +21,13 @@ router.post('/', AirplaneValidate.validateCreateRequest, AirplaneController.crea
 
 router.get('/', AirplaneController.getAllAirplanes);
 
+/**
+ * api : /api/v1/airplane/:id
+ * method : GET
+ * access : PUBLIC
+ * description : get an airplane by id
+ */
+
+router.get('/:id', AirplaneController.getAirplane);
+
 module.exports = router;

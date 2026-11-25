@@ -39,10 +39,29 @@ async function getAllAirplanes() {
     }catch(error) {
         throw new AppError('Cannnot fetch all airplanes', StatusCodes.INTERNAL_SERVER_ERROR);
     }
+
+} 
+
+// To get a single airplane object from the database
+
+async function getAirplane(id) {
+
+    try {    
+        
+        const arirplanes = await airplaneRepository.get(id);
+        return arirplanes;
+
+    }catch(error) {
+        if( error.statusCode == StatusCodes.NOT_FOUND) {
+            throw new AppError('The airplane you requested is not available', error.statusCode);
+        }
+        throw new AppError('Cannnot fetch all airplanes', StatusCodes.INTERNAL_SERVER_ERROR);
+    }
     
 } 
 
 module.exports = {
     createAirplane,
-    getAllAirplanes
+    getAllAirplanes,
+    getAirplane
 }
