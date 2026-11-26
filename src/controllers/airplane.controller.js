@@ -4,7 +4,7 @@ const { StatusCodes } = require('http-status-codes');
 const { successResponse , errorResponse } = require ('../utils/common');
 
 /**
- * POST : /airplanes   
+ * POST : /airplanes  
  * req-body : { model_no : 'airbus a320', capacity : 180 }
  */
 

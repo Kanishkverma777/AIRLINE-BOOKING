@@ -5,7 +5,7 @@ const AirplaneRoute = require('./airplane.route');
 const router = express.Router();
 
 router.get('/info', infoController.info);
-router.use('/airplane', AirplaneRoute);
+router.use('/airplanes', AirplaneRoute);
 
 
 module.exports = router;
