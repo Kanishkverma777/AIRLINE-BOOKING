@@ -98,10 +98,37 @@ async function destroyAirplane(req, res) {
     }
 }
 
+/**
+ * PATCH : /airplanes/:id
+ * req-params : { id : 1 }
+ * req-body : { model_no : 'airbus a320', capacity : 180 }
+ */
+
+async function updateAirplane(req, res) {
+
+    try{ 
+
+        const response = await AirplaneService.updateAirplane( 
+            req.params.id , 
+            req.body
+        );
+        successResponse.data = response;
+        return res
+                .status(StatusCodes.OK)
+                .json( successResponse );
+
+    }catch(error){
+        errorResponse.error = error;
+        return res
+                .status(error.statusCode)
+                .json( errorResponse );
+    }
+}
 
 module.exports = {
     createAirplane,
     getAllAirplanes,
     getAirplane,
+    updateAirplane,
     destroyAirplane
 }

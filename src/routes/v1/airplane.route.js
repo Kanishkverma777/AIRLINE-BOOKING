@@ -39,4 +39,13 @@ router.get('/:id', AirplaneController.getAirplane);
 
 router.delete('/:id', AirplaneController.destroyAirplane);
 
+/**
+ * api : /api/v1/airplane/:id
+ * method : PATCH
+ * access : PUBLIC
+ * description : update an airplane by id
+ */
+
+router.patch('/:id', AirplaneController.updateAirplane);
+
 module.exports = router;
