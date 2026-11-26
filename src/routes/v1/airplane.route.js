@@ -1,19 +1,19 @@
 const express = require('express');
 const router = express.Router();
 const { AirplaneController} = require('../../controllers');
-const { AirplaneValidate} = require('../../middleware')
+const { AirplaneMiddleware } = require('../../middleware')
 
 /**
- * api : /api/v1/airplane
+ * api : /api/v1/airplanes
  * method : POST
  * access : PUBLIC
  * description : create a new airplane
  */
 
-router.post('/', AirplaneValidate.validateCreateRequest, AirplaneController.createAirplane);
+router.post('/', AirplaneMiddleware.validateCreateRequest, AirplaneController.createAirplane);
 
 /**
- * api : /api/v1/airplane
+ * api : /api/v1/airplanes
  * method : GET
  * access : PUBLIC
  * description : get all airplanes
@@ -22,7 +22,7 @@ router.post('/', AirplaneValidate.validateCreateRequest, AirplaneController.crea
 router.get('/', AirplaneController.getAllAirplanes);
 
 /**
- * api : /api/v1/airplane/:id
+ * api : /api/v1/airplanes/:id
  * method : GET
  * access : PUBLIC
  * description : get an airplane by id
@@ -31,7 +31,7 @@ router.get('/', AirplaneController.getAllAirplanes);
 router.get('/:id', AirplaneController.getAirplane);
 
 /**
- * api : /api/v1/airplane/:id
+ * api : /api/v1/airplanes/:id
  * method : DELETE
  * access : PUBLIC
  * description : delete an airplane by id
@@ -40,7 +40,7 @@ router.get('/:id', AirplaneController.getAirplane);
 router.delete('/:id', AirplaneController.destroyAirplane);
 
 /**
- * api : /api/v1/airplane/:id
+ * api : /api/v1/airplanes/:id
  * method : PATCH
  * access : PUBLIC
  * description : update an airplane by id
